@@ -1,0 +1,10 @@
+<mat-form-field [color]="'accent'" appearance="outline" class="character-name-field">
+  <input
+    [(ngModel)]="characterName"
+    [disabled]="isDisabled"
+    (blur)="onCharacterNameInputBlur()"
+    matInput
+    required
+    placeholder="Character name"
+  >
+</mat-form-field>

@@ -1,0 +1,201 @@
+<ng-container [ngSwitch]="statName">
+  <ng-container
+    *ngSwitchCase="'Strength'"
+  >
+    <div class="stat-info-container">
+      <p>Strength - male weapons, carry weight.</p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight strength">Each 3 points</span> of strength grant
+        <span class="stat-highlight strength">5 HP</span> points (basic HP is 10).
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight strength">After 5 lvl</span> of strength character gains buff for the male attacks
+        (<span class="stat-highlight strength">+1 for each lvl</span>).
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight strength">Each 3 points</span> of strength grant
+        <span class="stat-highlight strength">10 carry weight</span> points (basic carry weight points are 15).
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Charisma'"
+  >
+    <div class="stat-info-container">
+      <p>Charisma - speech, barter, flirt.</p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight charisma">10 lvl</span> of charisma provides with an ability to solve any fight using speech or flirt
+        (<span class="stat-highlight charisma">difficulty 16</span>).
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Endurance'"
+  >
+    <div class="stat-info-container">
+      <p>
+        <span class="stat-highlight endurance">Each 3 points</span> of endurance grant
+        <span class="stat-highlight endurance">+1 passive armor point</span>. Armor
+        points affect an amount of damage retrieved during combat. Each armor
+        point reduces retrieved damage by 10%.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight endurance">10 lvl of endurance</span> grant 50% damage resist.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight endurance">Each 3 points</span> of endurance grant
+        <span class="stat-highlight endurance">1 death point</span> (basic death points
+        for each character are 3). If character is knocked out in a fight he
+        looses 1 death point after each round of fight. If character looses
+        all Death Points during a fight - he dies. Death points could be
+        restored after the long break, or using first aid.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight endurance">10 lvl of</span> of endurance provides
+        character with an ability to return to fight with 30% of his max HP
+        (requires direct check of endurance difficulty 16, 1 attempt for
+        fight).
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Intelligence'"
+  >
+    <div class="stat-info-container">
+      <p>
+        <span class="stat-highlight intelligence">Each 5 points</span> of intelligence grant
+        access to new tier of magic (spells should be learned 2 spells default
+        pool, learning requires direct intelligence check).
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        Manna pool depends on the intelligence level: 5 - 10MP. 6 - 15MP. 7 -
+        20MP. 8 - 25MP. 9 - 30MP. 10 - 50MP. Manna points could be restored by
+        mana potions or a long break. Mana potion restores 0 - 10 MP. 10 lvl
+        grants access to big mana potion brewing technique which restores 10 -
+        20MP.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        Brewing skill is available if intelligence is
+        <span class="stat-highlight intelligence"> 3 or higher</span>. Brewing requires
+        additive ingredients and intelligence check which determines
+        effectivity of the potion.
+      </p>
+      <mat-divider></mat-divider>
+      <div>
+        <p>
+          <span class="stat-highlight intelligence">1 Tier spells</span>
+        </p>
+        <ul>
+          <li>
+            Roots binding - enemy looses an ability to move for one round
+            <span class="stat-highlight intelligence">3 MP</span>.
+          </li>
+          <li>
+            Healing touch - restores health by 2 HP
+            <span class="stat-highlight intelligence">4 MP</span>.
+          </li>
+          <li>
+            Fireball - deals 2 damage at once and 1 damage at the start of the
+            next 2 rounds <span class="stat-highlight intelligence">5 MP</span>.
+          </li>
+          <li>
+            Magic shield - blocks 50% of damage for 2 rounds
+            <span class="stat-highlight intelligence">6 MP</span>.
+          </li>
+          <li>
+            Third eye - grants 2 point buff for the next perception check
+            <span class="stat-highlight intelligence">5 MP</span>.
+          </li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <p>
+          <span class="stat-highlight intelligence">2 Tier spells</span>
+        </p>
+        <ul>
+          <li>
+            Killing curse - enemy dies after 3 rounds
+            <span class="stat-highlight intelligence">10MP</span>.
+          </li>
+          <li>
+            Fiendfyre - summons living fire, that strikes all enemies at the
+            start of the each round. Deals 3 damage to each.
+            <span class="stat-highlight intelligence">8 MP</span>.
+          </li>
+          <li>
+            Mana vampirism - you can finish enemy if his HP is 20% or lower
+            and get MP amount depending on additive intelligence check
+            <span class="stat-highlight intelligence">5 MP</span>.
+          </li>
+          <li>
+            Bombarda - Explosive spell, which deals 10HP damage to enemies
+            standing nearby. Could be used to destroy obstacles
+            <span class="stat-highlight intelligence">15 MP</span>.
+          </li>
+          <li>
+            Mind trick - causes enemy to fight against his group for 3 rounds
+            <span class="stat-highlight intelligence">10 MP</span>.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Agility'"
+  >
+    <div class="stat-info-container">
+      <p>Agility - acrobatics, thief, range weapons.</p>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Perception'"
+  >
+    <div class="stat-info-container">
+      <p>Perception - first aid, lock-pick, traps, sneak, investigation.</p>
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngSwitchCase="'Luck'"
+  >
+    <div class="stat-info-container">
+      <p>
+        Luck - requires coin flip instead of D20 for any check.
+        <span class="stat-highlight luck">Each 3 points</span> of luck gives retry
+        attempt.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight luck">10 points</span> of luck gives an
+        ability to duel with game master.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        Duels: Rock-paper-scissors, greater number, call more items in 10 sec.
+      </p>
+      <p>
+        <span class="stat-highlight luck">Duel win grants extra luck effect</span>
+        (success + additive buffs depending on situation).
+      </p>
+      <p>
+        <span class="stat-highlight luck">Duel loose grants bad luck effect</span>
+        (failure with additive debuffs depending on situation).
+      </p>
+    </div>
+  </ng-container>
+</ng-container>

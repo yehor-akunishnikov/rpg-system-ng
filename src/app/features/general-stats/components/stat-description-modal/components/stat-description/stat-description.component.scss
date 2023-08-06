@@ -1,0 +1,51 @@
+.stat-info-container {
+  p {
+    margin: 20px 0;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  ul {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.stat-highlight {
+  padding: 2px 6px;
+}
+
+.stat-highlight.strength {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.stat-highlight.charisma {
+  background-color: rgba(255, 0, 234, 0.3);
+}
+
+.stat-highlight.endurance {
+  background-color: rgba(208, 164, 82, 0.3);
+}
+
+.stat-highlight.intelligence {
+  background-color: rgba(14, 58, 204, 0.3);
+}
+
+.stat-highlight.agility {
+  background-color: rgba(65, 190, 43, 0.3);
+}
+
+.stat-highlight.perception {
+  background-color: rgba(85, 36, 161, 0.3);
+}
+
+.stat-highlight.luck {
+  background-color: rgba(225, 105, 24, 0.3);
+}

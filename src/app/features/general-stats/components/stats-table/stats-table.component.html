@@ -1,0 +1,37 @@
+<table [dataSource]="stats" mat-table>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Stat</th>
+    <td [class]="getStatNameClass(element.name)" mat-cell *matCellDef="let element">
+      <div class="stat-name">
+        <ng-container *ngIf="!isCharacterCreated">
+          <button
+            mat-raised-button
+            color="accent"
+            [disabled]="isIncrementDisabled(stats, element.value, points)"
+            (click)="generalStatsStateService.incrementStat(element.name)"
+            class="control-button"
+          >+</button>
+          <button
+            mat-raised-button
+            color="warn"
+            [disabled]="isDecrementDisabled(element.value)"
+            (click)="generalStatsStateService.decrementStat(element.name)"
+            class="control-button"
+          >-</button>
+        </ng-container>
+        <button
+          mat-button
+          (click)="statDescriptionModalService.openDialog(element.name)"
+        >
+          <span>{{element.name}}</span>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="value">
+    <th class="value-col" mat-header-cell *matHeaderCellDef>Value</th>
+    <td [ngClass]="getStatNameClass(element.name)" class="value-col" mat-cell *matCellDef="let element"> {{element.value}} </td>
+  </ng-container>
+  <tr class="stat-head-row" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr class="stat-row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
