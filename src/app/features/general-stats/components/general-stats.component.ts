@@ -52,6 +52,7 @@ export class GeneralStatsComponent implements OnInit {
     if (isResetConfirmed) {
       localStorage.removeItem('characterData');
       this.generalStatsStateService.reset();
+      this.characterName = '';
     }
   }
 }
