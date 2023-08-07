@@ -18,7 +18,8 @@ export class BasicsComponent {
       this.statsList = [
         STAT_NAME.HP,
         STAT_NAME.MALE_DAMAGE,
-        STAT_NAME.UNARMED
+        STAT_NAME.UNARMED,
+        STAT_NAME.MP
       ];
     }
   }

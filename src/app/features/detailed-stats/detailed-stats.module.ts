@@ -7,6 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import { PerksComponent } from './components/perks/perks.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { BasicsComponent } from './components/basics/basics.component';
+import { SpellsComponent } from './components/spells/spells.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BasicsComponent } from './components/basics/basics.component';
     StatItemComponent,
     PerksComponent,
     BasicsComponent,
+    SpellsComponent,
   ],
   exports: [DetailedStatsComponent],
   imports: [

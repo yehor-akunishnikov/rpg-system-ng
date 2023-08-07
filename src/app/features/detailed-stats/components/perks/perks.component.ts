@@ -43,6 +43,24 @@ export class PerksComponent implements OnChanges {
               description: 'Provides +3 point bonus to charisma checks'
             });
           }
+          break;
+        }
+        case 'Intelligence': {
+          if (statValue >= 3) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Potions master',
+              description: 'You can brew potions'
+            });
+          }
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Heisenberg',
+              description: 'You can brew much complex potions including big mana potion'
+            });
+          }
+          break;
         }
       }
     });

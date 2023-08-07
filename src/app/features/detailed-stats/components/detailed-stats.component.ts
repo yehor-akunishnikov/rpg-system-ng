@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {StatsMap} from '../../general-stats/models/models';
 
@@ -10,4 +10,10 @@ import {StatsMap} from '../../general-stats/models/models';
 })
 export class DetailedStatsComponent {
   @Input() public statsMap: StatsMap;
+  @Input() public spells: string[] = [];
+  @Output() public onSpellSelected = new EventEmitter<string>();
+
+  public selectSpell(spellName: string): void {
+    this.onSpellSelected.emit(spellName);
+  }
 }

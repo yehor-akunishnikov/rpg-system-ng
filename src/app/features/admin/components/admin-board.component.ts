@@ -11,7 +11,8 @@ export class AdminBoardComponent implements OnInit {
   public adminData: {
     [key: string]: {
       stats: StatItem[],
-      statsMap: StatsMap
+      statsMap: StatsMap,
+      spells: string[],
     };
   } | undefined;
 

@@ -5,4 +5,7 @@
   <div>
     <app-perks [statsMap]="statsMap"></app-perks>
   </div>
+  <div>
+    <app-spells [Intelligence]="statsMap.Intelligence" [spells]="spells" (onSpellSelected)="selectSpell($event)"></app-spells>
+  </div>
 </div>

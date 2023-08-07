@@ -4,7 +4,8 @@ import {StatsMap} from '../../../general-stats/models/models';
 export enum STAT_NAME {
   HP = 'HP',
   MALE_DAMAGE = 'MELEE DAMAGE',
-  UNARMED = 'UNARMED'
+  UNARMED = 'UNARMED',
+  MP = 'MP'
 }
 
 @Component({
@@ -46,6 +47,21 @@ export class StatItemComponent {
         return statsMap.Strength === 10 ?
           BASE_UNARMED + STRENGTH_ORIGIN_BONUS + strengthBonus :
           BASE_UNARMED + strengthBonus;
+      }
+      case STAT_NAME.MP: {
+        let mpAmount = 0;
+
+        if (statsMap.Intelligence >= 5) {
+          const BASIC_MP = 10;
+          const intBonus = (statsMap.Intelligence - 5) * 5;
+          const INT_ORIGIN_BONUS = 5;
+
+          mpAmount = statsMap.Intelligence === 10 ?
+            BASIC_MP +   intBonus + INT_ORIGIN_BONUS :
+            BASIC_MP + intBonus;
+        }
+
+        return mpAmount;
       }
       default: return 0;
     }

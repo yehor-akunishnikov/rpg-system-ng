@@ -8,6 +8,7 @@ export interface State {
   points: number;
   characterName: string;
   isCharacterCreated: boolean;
+  spells: string[];
 }
 
 @Injectable()
@@ -34,13 +35,14 @@ export class GeneralStatsStateService {
     points: 28,
     characterName: '',
     isCharacterCreated: false,
+    spells: [],
   };
 
   public initialize(): void {
     const characterDataFromLocalStorage = localStorage.getItem('characterData');
 
     if (characterDataFromLocalStorage) {
-      const {stats, characterName} = JSON.parse(characterDataFromLocalStorage);
+      const {stats, characterName, spells} = JSON.parse(characterDataFromLocalStorage);
 
       this.state = {
         ...this.state,
@@ -52,6 +54,7 @@ export class GeneralStatsStateService {
           return statsMap;
         }, {}),
         isCharacterCreated: true,
+        spells,
       };
     }
   }
@@ -79,6 +82,7 @@ export class GeneralStatsStateService {
       points: 28,
       characterName: '',
       isCharacterCreated: false,
+      spells: [],
     };
   }
 
@@ -120,5 +124,13 @@ export class GeneralStatsStateService {
       characterName,
       isCharacterCreated: true
     };
+  }
+
+  public addSpell(spellName: string) {
+    this.state.spells = [...this.state.spells, spellName];
+  }
+
+  public removeSpell(spellName: string) {
+    this.state.spells = this.state.spells.filter(spell => spell !== spellName);
   }
 }

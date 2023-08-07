@@ -22,13 +22,15 @@
         </div>
         <app-detailed-stats
           [statsMap]="state.statsMap"
+          [spells]="state.spells"
+          (onSpellSelected)="selectSpell($event, state.spells, state.isCharacterCreated)"
         ></app-detailed-stats>
       </mat-card-content>
 
       <mat-card-footer class="footer">
         <ng-container *ngIf="!state.isCharacterCreated">
           <button
-            [disabled]="isCreateButtonDisabled(state.points, characterName)"
+            [disabled]="isCreateButtonDisabled(state.points, characterName, state.statsMap, state.spells)"
             (click)="createCharacter(state, characterName)"
             mat-raised-button
             color="accent"
