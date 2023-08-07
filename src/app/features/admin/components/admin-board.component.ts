@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {StatItem} from '../../general-stats/models/models';
+import {StatItem, StatsMap} from '../../general-stats/models/models';
 
 @Component({
   selector: 'app-admin-board',
@@ -10,7 +10,8 @@ import {StatItem} from '../../general-stats/models/models';
 export class AdminBoardComponent implements OnInit {
   public adminData: {
     [key: string]: {
-      stats: StatItem[]
+      stats: StatItem[],
+      statsMap: StatsMap
     };
   } | undefined;
 
@@ -19,6 +20,16 @@ export class AdminBoardComponent implements OnInit {
 
     if (adminDataJSON) {
       this.adminData = JSON.parse(adminDataJSON);
+      Object.keys(this.adminData).forEach(characterName => {
+        const characterStats = this.adminData[characterName].stats;
+        const statsMap: StatsMap = {} as StatsMap;
+
+        characterStats.forEach(stat => {
+          statsMap[stat.name] = stat.value;
+        });
+
+        this.adminData[characterName].statsMap = statsMap;
+      });
     }
   }
 

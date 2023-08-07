@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 
-import {StatItem} from '../models/models';
+import {StatItem, StatsMap} from '../models/models';
 
 export interface State {
   stats: StatItem[];
+  statsMap: StatsMap;
   points: number;
   characterName: string;
   isCharacterCreated: boolean;
@@ -21,6 +22,15 @@ export class GeneralStatsStateService {
       {name: 'Perception', value: 0},
       {name: 'Luck', value: 0},
     ],
+    statsMap: {
+      Strength: 0,
+      Charisma: 0,
+      Endurance: 0,
+      Intelligence: 0,
+      Agility: 0,
+      Perception: 0,
+      Luck: 0,
+    },
     points: 28,
     characterName: '',
     isCharacterCreated: false,
@@ -32,9 +42,17 @@ export class GeneralStatsStateService {
     if (characterDataFromLocalStorage) {
       const {stats, characterName} = JSON.parse(characterDataFromLocalStorage);
 
-      this.state.stats = stats;
-      this.state.characterName = characterName;
-      this.state.isCharacterCreated = true;
+      this.state = {
+        ...this.state,
+        stats: stats,
+        characterName,
+        statsMap: stats.reduce((statsMap: StatsMap, statItem: StatItem) => {
+          statsMap[statItem.name] = statItem.value;
+
+          return statsMap;
+        }, {}),
+        isCharacterCreated: true,
+      };
     }
   }
 
@@ -49,6 +67,15 @@ export class GeneralStatsStateService {
         {name: 'Perception', value: 0},
         {name: 'Luck', value: 0},
       ],
+      statsMap: {
+        Strength: 0,
+        Charisma: 0,
+        Endurance: 0,
+        Intelligence: 0,
+        Agility: 0,
+        Perception: 0,
+        Luck: 0,
+      },
       points: 28,
       characterName: '',
       isCharacterCreated: false,
@@ -60,25 +87,38 @@ export class GeneralStatsStateService {
   }
 
   public incrementStat(statName: string): void {
-    const stat = this.state.stats.find(stat => stat.name === statName);
-
-    if (stat) {
-      stat.value++;
-      this.state.points--;
-    }
+    this.state = {
+      ...this.state,
+      statsMap: {
+        ...this.state.statsMap,
+        [statName]: this.state.statsMap[statName] + 1,
+      },
+      points: this.state.points - 1,
+      stats: this.state.stats.map(stat => {
+        return stat.name === statName ? {...stat, value: stat.value + 1} : stat;
+      }),
+    };
   }
 
   public decrementStat(statName: string): void {
-    const stat = this.state.stats.find(stat => stat.name === statName);
-
-    if (stat) {
-      stat.value--;
-      this.state.points++;
-    }
+    this.state = {
+      ...this.state,
+      statsMap: {
+        ...this.state.statsMap,
+        [statName]: this.state.statsMap[statName] - 1,
+      },
+      points: this.state.points + 1,
+      stats: this.state.stats.map(stat => {
+        return stat.name === statName ? {...stat, value: stat.value - 1} : stat;
+      }),
+    };
   }
 
   public onCharacterCreated(characterName: string): void {
-    this.state.characterName = characterName;
-    this.state.isCharacterCreated = true;
+    this.state = {
+      ...this.state,
+      characterName,
+      isCharacterCreated: true
+    };
   }
 }

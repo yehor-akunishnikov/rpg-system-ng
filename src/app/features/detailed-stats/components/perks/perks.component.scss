@@ -1,0 +1,73 @@
+.perk-items-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-top: -15px;
+  margin-right: -15px;
+
+  & > * {
+    max-width: calc(25% - 15px);
+    margin-right: 15px;
+    margin-top: 15px;
+  }
+
+  @media screen and (max-width: 992px) {
+    & > * {
+      max-width: calc(33.3% - 15px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & > * {
+      max-width: calc(50% - 15px);
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    & > * {
+      max-width: calc(100% - 15px);
+      margin-right: 0;
+    }
+  }
+}
+
+.card {
+  width: 100%;
+  color: #fff;
+  font-weight: 500;
+}
+
+.stat-strength {
+  background-color: rgba(255, 0, 0, 0.4) !important;
+}
+.stat-charisma {
+  background-color: rgba(250, 81, 250, 0.4) !important;
+}
+.stat-endurance {
+  background-color: rgba(255, 239, 160, 0.4) !important;
+}
+.stat-intelligence {
+  background-color: rgba(50, 77, 252, 0.4) !important;
+}
+.stat-agility {
+  background-color: rgba(91, 187, 4, 0.4) !important;
+}
+.stat-perception {
+  background-color: rgba(128, 0, 128, 0.4) !important;
+}
+.stat-luck {
+  background-color: rgba(255, 145, 0, 0.4) !important;
+}
+
+.title {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 10px;
+  background-color: #575555;
+}
+
+.entities-container {
+  background-color: #575555;
+}

@@ -1,0 +1,17 @@
+<mat-card class="title">
+  <mat-card-content>
+    <p>DETAILED STATS</p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="entities-container">
+  <mat-card-content>
+    <div class="stat-items-container">
+      <ng-container *ngFor="let statName of statsList">
+        <app-stat-item
+          [statName]="statName"
+          [statsMap]="statsMap"
+        ></app-stat-item>
+      </ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>

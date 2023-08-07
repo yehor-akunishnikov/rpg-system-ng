@@ -1,17 +1,27 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {GeneralStatsComponent} from './features/general-stats/components/general-stats.component';
 import {AdminBoardComponent} from './features/admin/components/admin-board.component';
 import {ImportPageComponent} from './features/admin/components/import-page/import-page.component';
+import {UserBoardComponent} from './features/user-board/components/user-board.component';
 
 const routes: Routes = [
   {
     path: 'rpgorganizer',
     children: [
       {
-        path: 'stats',
-        component: GeneralStatsComponent,
+        path: 'user',
+        children: [
+          {
+            path: 'board',
+            component: UserBoardComponent,
+          },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'board'
+          }
+        ]
       },
       {
         path: 'admin',
@@ -34,7 +44,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'stats'
+        redirectTo: 'user'
       }
     ]
   },

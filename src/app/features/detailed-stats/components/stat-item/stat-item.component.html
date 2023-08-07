@@ -1,0 +1,5 @@
+<mat-card class="card" [ngClass]="getCardClassByStatName(statName)">
+  <mat-card-content class="card-content">
+    <p class="card-title">{{statName}} {{countStatValue(statName, statsMap)}}</p>
+  </mat-card-content>
+</mat-card>

@@ -11,11 +11,16 @@
           <mat-card-header>
             <div class="character-name">{{character.key}}</div>
           </mat-card-header>
-          <app-stats-table
-            [isCharacterCreated]="true"
-            [points]="0"
-            [stats]="character.value.stats"
-          ></app-stats-table>
+          <div class="stats-table-container">
+            <app-stats-table
+              [isCharacterCreated]="true"
+              [points]="0"
+              [stats]="character.value.stats"
+            ></app-stats-table>
+          </div>
+          <app-detailed-stats
+            [statsMap]="character.value.statsMap"
+          ></app-detailed-stats>
         </mat-card-content>
       </mat-card>
     </ng-container>

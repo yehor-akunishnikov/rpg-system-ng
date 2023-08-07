@@ -4,8 +4,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {GeneralStatsModule} from './features/general-stats/general-stats.module';
+
 import {AdminModule} from './features/admin/admin.module';
+import {UserBoardModule} from './features/user-board/user-board.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,8 @@ import {AdminModule} from './features/admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    GeneralStatsModule,
-    AdminModule
+    AdminModule,
+    UserBoardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

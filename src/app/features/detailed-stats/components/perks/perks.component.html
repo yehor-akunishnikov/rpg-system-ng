@@ -1,0 +1,20 @@
+<ng-container *ngIf="perksArray.length">
+  <mat-card class="title">
+    <mat-card-content>
+      <p>PERKS</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="entities-container">
+    <mat-card-content>
+      <div class="perk-items-container">
+        <ng-container *ngFor="let perk of perksArray">
+          <mat-card class="card" [ngClass]="getCardClassByStatName(perk.category)" [matTooltip]="perk.description">
+            <mat-card-content>
+              <p>{{perk.perkName}}</p>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

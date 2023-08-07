@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {StatItem, StatsMap} from '../../../general-stats/models/models';
 
 @Component({
   selector: 'app-import-page',
@@ -9,9 +10,15 @@ export class ImportPageComponent {
   public characterJSON = '';
 
   public characterData: any;
+  public statsMap: StatsMap;
 
   public import(characterJSON: string) {
     this.characterData = JSON.parse(characterJSON);
+    this.statsMap = this.characterData.stats.reduce((statsMap: StatsMap, statItem: StatItem) => {
+      statsMap[statItem.name] = statItem.value;
+
+      return statsMap;
+    }, {});
 
     const currentAdminDataJSON = localStorage.getItem('adminData');
 

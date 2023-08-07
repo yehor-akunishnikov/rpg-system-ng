@@ -10,6 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
+import {GeneralStatsStateService} from '../general-stats/service/general-stats-state.service';
+import {DetailedStatsModule} from '../detailed-stats/detailed-stats.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,10 @@ import {RouterLink} from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterLink
-  ]
+    RouterLink,
+    DetailedStatsModule
+  ],
+  providers: [GeneralStatsStateService]
 })
 export class AdminModule {
 }

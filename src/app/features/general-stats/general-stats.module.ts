@@ -11,10 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 
-import {GeneralStatsComponent} from './components/general-stats.component';
 import {CharacterNameInputComponent} from './components/character-name-input/character-name-input.component';
 import {StatsTableComponent} from './components/stats-table/stats-table.component';
-import {GeneralStatsStateService} from './service/general-stats-state.service';
 import {
   StatDescriptionModalComponent
 } from './components/stat-description-modal/components/stat-description-modal.component';
@@ -22,18 +20,20 @@ import {StatDescriptionModalService} from './service/stat-description-modal.serv
 import {
   StatDescriptionComponent
 } from './components/stat-description-modal/components/stat-description/stat-description.component';
+import { DirectCheckPipe } from './pipes/direct-check.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
-    GeneralStatsComponent,
     CharacterNameInputComponent,
     StatsTableComponent,
     StatDescriptionModalComponent,
     StatDescriptionComponent,
+    DirectCheckPipe,
   ],
   exports: [
-    GeneralStatsComponent,
-    StatsTableComponent
+    StatsTableComponent,
+    CharacterNameInputComponent
   ],
   imports: [
     CommonModule,
@@ -44,9 +44,10 @@ import {
     FormsModule,
     MatDialogModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
-  providers: [GeneralStatsStateService, StatDescriptionModalService]
+  providers: [StatDescriptionModalService]
 })
 export class GeneralStatsModule {
 }

@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+}
+
+.card {
+  color: #fff;
+  font-weight: 500;
+}
+
+.card.hp { background-color: #d73131; }
+.card.melee-damage { background-color: #674622; }
+.card.unarmed { background-color: #ff9d4f; }

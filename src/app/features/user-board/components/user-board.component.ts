@@ -1,15 +1,16 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Clipboard} from '@angular/cdk/clipboard';
 
-import {GeneralStatsStateService, State} from '../service/general-stats-state.service';
+import {GeneralStatsStateService, State} from '../../general-stats/service/general-stats-state.service';
 
 @Component({
-  selector: 'app-general-stats',
-  templateUrl: './general-stats.component.html',
-  styleUrls: ['./general-stats.component.scss'],
+  selector: 'app-user-board',
+  templateUrl: './user-board.component.html',
+  styleUrls: ['./user-board.component.scss'],
+  providers: [GeneralStatsStateService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GeneralStatsComponent implements OnInit {
+export class UserBoardComponent implements OnInit {
   public characterName = this.generalStatsStateService.getState().characterName;
 
   constructor(
@@ -34,7 +35,7 @@ export class GeneralStatsComponent implements OnInit {
     this.generalStatsStateService.onCharacterCreated(characterName);
     localStorage.setItem('characterData', JSON.stringify({
       stats: state.stats,
-      characterName: state.characterName,
+      characterName,
     }));
   }
 

@@ -13,11 +13,16 @@
         <ng-container *ngIf="!state.isCharacterCreated">
           <p class="points-counter">Free points left: {{state.points}}</p>
         </ng-container>
-        <app-stats-table
-          [isCharacterCreated]="state.isCharacterCreated"
-          [stats]="state.stats"
-          [points]="state.points"
-        ></app-stats-table>
+        <div class="stats-table-container">
+          <app-stats-table
+            [isCharacterCreated]="state.isCharacterCreated"
+            [stats]="state.stats"
+            [points]="state.points"
+          ></app-stats-table>
+        </div>
+        <app-detailed-stats
+          [statsMap]="state.statsMap"
+        ></app-detailed-stats>
       </mat-card-content>
 
       <mat-card-footer class="footer">

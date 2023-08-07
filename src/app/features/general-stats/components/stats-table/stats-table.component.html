@@ -23,7 +23,7 @@
           mat-button
           (click)="statDescriptionModalService.openDialog(element.name)"
         >
-          <span>{{element.name}}</span>
+          <span>{{element.name}} <span matTooltip="Direct check bonus/penalty">({{element.value | directCheck}})</span></span>
         </button>
       </div>
     </td>
