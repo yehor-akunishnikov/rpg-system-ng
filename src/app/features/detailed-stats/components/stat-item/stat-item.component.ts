@@ -53,24 +53,21 @@ export class StatItemComponent {
     }
   }
 
-  public countStatValue(statName: STAT_NAME, statsMap: StatsMap): number {
+  public countStatValue(statName: STAT_NAME, statsMap: StatsMap): number | string {
     switch (statName) {
       case STAT_NAME.HP: {
-        const BASE_HP = 10;
+        const BASE_HP = 5;
         const strengthBonus = statsMap.Strength ? Math.floor(statsMap.Strength / 3) : 0;
 
-        return BASE_HP + strengthBonus * 5;
+        return BASE_HP + strengthBonus * 4;
       }
       case STAT_NAME.MALE_DAMAGE:
         return statsMap.Strength - 5;
       case STAT_NAME.UNARMED: {
         const BASE_UNARMED = 0;
-        const STRENGTH_ORIGIN_BONUS = 4;
         const strengthBonus = statsMap.Strength - 5 >= 0 ? (statsMap.Strength - 5) + 1 : 0;
 
-        return statsMap.Strength === 10 ?
-          BASE_UNARMED + STRENGTH_ORIGIN_BONUS + strengthBonus :
-          BASE_UNARMED + strengthBonus;
+        return BASE_UNARMED + strengthBonus;
       }
       case STAT_NAME.MP: {
         let mpAmount = 0;

@@ -100,6 +100,13 @@ export class PerksComponent implements OnChanges {
               description: 'You can use tricks during the fight to shock your opponents'
             });
           }
+          if (statValue >= 3) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Faster than bullet',
+              description: 'You can dodge attacks during the fight (requires direct check of agility)'
+            });
+          }
           break;
         }
         case 'Perception': {
