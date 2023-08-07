@@ -5,18 +5,14 @@
       <div class="stat-name">
         <ng-container *ngIf="!isCharacterCreated">
           <button
-            mat-raised-button
-            color="accent"
             [disabled]="isIncrementDisabled(stats, element.value, points)"
             (click)="generalStatsStateService.incrementStat(element.name)"
-            class="control-button"
+            class="control-button plus"
           >+</button>
           <button
-            mat-raised-button
-            color="warn"
             [disabled]="isDecrementDisabled(element.value)"
             (click)="generalStatsStateService.decrementStat(element.name)"
-            class="control-button"
+            class="control-button minus"
           >-</button>
         </ng-container>
         <button
