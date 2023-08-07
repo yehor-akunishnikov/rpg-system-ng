@@ -18,8 +18,14 @@ export class BasicsComponent {
       this.statsList = [
         STAT_NAME.HP,
         STAT_NAME.MALE_DAMAGE,
+        STAT_NAME.RANGE_DAMAGE,
         STAT_NAME.UNARMED,
-        STAT_NAME.MP
+        STAT_NAME.MP,
+        STAT_NAME.RETRY_ATTEMPTS,
+        STAT_NAME.PASSIVE_ARMOUR,
+        STAT_NAME.DEATH_POINTS,
+        STAT_NAME.DODGE,
+        STAT_NAME.STEALTH,
       ];
     }
   }

@@ -62,6 +62,70 @@ export class PerksComponent implements OnChanges {
           }
           break;
         }
+        case 'Luck': {
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Lucky Joe',
+              description: 'You can cheat your fate'
+            });
+          }
+          break;
+        }
+        case 'Endurance': {
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Respiration',
+              description: 'You are too robust even to die'
+            });
+          }
+          break;
+        }
+        case 'Charisma': {
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'You so fucking precious when you smile',
+              description: 'You can solve any fight by charisma check'
+            });
+          }
+          break;
+        }
+        case 'Agility': {
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Parkooooour',
+              description: 'You can use tricks during the fight to shock your opponents'
+            });
+          }
+          break;
+        }
+        case 'Perception': {
+          if (statValue >= 5) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Hunter',
+              description: 'You are good at hunting'
+            });
+          }
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Not today',
+              description: 'You always notice traps'
+            });
+          }
+          if (statValue === 10) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Doc',
+              description: 'You have first-aid skills'
+            });
+          }
+          break;
+        }
       }
     });
 

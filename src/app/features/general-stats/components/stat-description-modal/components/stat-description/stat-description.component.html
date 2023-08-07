@@ -49,10 +49,6 @@
       </p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight endurance">10 lvl of endurance</span> grant 50% damage resist.
-      </p>
-      <mat-divider></mat-divider>
-      <p>
         <span class="stat-highlight endurance">Each 3 points</span> of endurance grant
         <span class="stat-highlight endurance">1 death point</span> (basic death points
         for each character are 3). If character is knocked out in a fight he
@@ -160,7 +156,21 @@
     *ngSwitchCase="'Agility'"
   >
     <div class="stat-info-container">
-      <p>Agility - acrobatics, thief, range weapons.</p>
+      <p>Agility - acrobatics, range weapons, dodge.</p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight agility">10 points</span> of agility gives an ability to perform various tricks.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight agility">After 5 lvl</span> of agility character gains buff for the range attacks
+        (<span class="stat-highlight agility">+1 for each lvl</span>).
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight agility">Each 3 lvl</span> of agility gains buff to dodging
+        (<span class="stat-highlight agility">+ 1 dodge point per 3d lvl</span>).
+      </p>
     </div>
   </ng-container>
 
@@ -169,6 +179,23 @@
   >
     <div class="stat-info-container">
       <p>Perception - first aid, lock-pick, traps, sneak, investigation.</p>
+      <mat-divider></mat-divider>
+      <p>
+        With <span class="stat-highlight perception">10 points</span> of perception you'll never be caught off guard.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight perception">After 3 lvl</span> of perception character gains first-aid skills.
+        Could be used to heal or back to fight your teammates.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight perception">Each 3 lvl</span> of perception gains buff to the stealth checks
+        (<span class="stat-highlight perception">+ 1 stealth point per 3d lvl</span>).
+      </p>
+      <p>
+        With <span class="stat-highlight perception">5 points</span> of perception you'll have an ability to hunt animals or your enemies.
+      </p>
     </div>
   </ng-container>
 
@@ -177,8 +204,8 @@
   >
     <div class="stat-info-container">
       <p>
-        Luck - requires coin flip instead of D20 for any check.
-        <span class="stat-highlight luck">Each 3 points</span> of luck gives retry
+        Luck - requires coin flip instead of D20 for the check retry.
+        <span class="stat-highlight luck">Each 5 points</span> of luck gives retry
         attempt.
       </p>
       <mat-divider></mat-divider>
