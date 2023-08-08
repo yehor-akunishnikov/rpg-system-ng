@@ -5,6 +5,7 @@ import {GeneralStatsModule} from '../general-stats/general-stats.module';
 import {DetailedStatsModule} from '../detailed-stats/detailed-stats.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {DiceRollerModule} from '../dice-roller/dice-roller.module';
 
 
 
@@ -18,7 +19,8 @@ import {MatCardModule} from '@angular/material/card';
     GeneralStatsModule,
     DetailedStatsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    DiceRollerModule
   ]
 })
 export class UserBoardModule { }

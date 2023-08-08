@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {GeneralStatsStateService} from '../general-stats/service/general-stats-state.service';
 import {DetailedStatsModule} from '../detailed-stats/detailed-stats.module';
+import {DiceRollerModule} from '../dice-roller/dice-roller.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {DetailedStatsModule} from '../detailed-stats/detailed-stats.module';
     MatInputModule,
     MatButtonModule,
     RouterLink,
-    DetailedStatsModule
+    DetailedStatsModule,
+    DiceRollerModule
   ],
   providers: [GeneralStatsStateService]
 })

@@ -1,0 +1,59 @@
+.actions-container {
+  position: fixed;
+  bottom: 0;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.buttons-container {
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.card {
+  background-color: #626262;
+  width: 100%;
+}
+
+.card-header {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -10px;
+  margin-right: -10px;
+
+  & > * {
+    max-width: calc(33.3% - 10px);
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 992px) {
+    & > * {
+      max-width: calc(50% - 10px);
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & > * {
+      max-width: calc(100% - 10px);
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.result {
+  color: #fff;
+  font-weight: 700;
+}

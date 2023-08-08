@@ -1,0 +1,174 @@
+<div>
+    <div>
+        <h1 mat-dialog-title>Roll the dice</h1>
+    </div>
+    <div mat-dialog-content>
+        <div class="cards-container">
+            <mat-card class="card">
+                <mat-card-header class="card-header">D20</mat-card-header>
+                <br/>
+                <mat-card-content>
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Use stat quantifier</mat-label>
+                            <mat-select [(ngModel)]="selectedStat" (ngModelChange)="clearD20Result()">
+                                <mat-option *ngFor="let stat of data.statsMap | keyvalue" [value]="stat.key">
+                                    {{stat.key}}
+                                </mat-option>
+                                <mat-option [value]="'None'">None</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Additional bonuses (e.g. perks)</mat-label>
+                            <input type="number" matInput [(ngModel)]="addBonusOrPenalty" (ngModelChange)="clearD20Result()">
+                        </mat-form-field>
+                    </div>
+                    <div class="buttons-container">
+                        <button
+                                mat-raised-button
+                                color="accent"
+                                (click)="rollD20Dice(selectedStat, addBonusOrPenalty, data.statsMap)"
+                        >Roll</button>
+                        <ng-container *ngIf="resultD20">
+                            <button
+                                    mat-raised-button
+                                    color="warn"
+                                    (click)="clearD20()"
+                            >Clear</button>
+                        </ng-container>
+                    </div>
+                    <ng-container *ngIf="resultD20">
+                        <br />
+                        <p class="result">
+                            Result: {{resultD20.dirtyRes}}
+                        </p>
+                        <p class="result">
+                            Formula:
+                            {{resultD20.cleanRes}}(roll D20) +
+                            {{selectedStat === 'None' ? 0 : (data.statsMap[selectedStat] ?? 0) - 5}}({{selectedStat === 'None' ? 'stat' : selectedStat}} bonus/penalty) +
+                            {{addBonusOrPenalty}} (additional bonus/penalty)
+                        </p>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card">
+                <mat-card-header class="card-header">DAMAGE DICE</mat-card-header>
+                <br/>
+                <mat-card-content>
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Stat</mat-label>
+                            <mat-select [(ngModel)]="damageDiceStat" (ngModelChange)="clearDamageResult()">
+                                <mat-option *ngFor="let stat of ['Strength', 'Agility']" [value]="stat">
+                                    {{stat}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Dice</mat-label>
+                            <mat-select [(ngModel)]="selectedDamageDice" (ngModelChange)="clearDamageResult()">
+                                <mat-option *ngFor="let damageDice of DAMAGE_DICES" [value]="damageDice.value">
+                                    {{damageDice.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Dices to roll</mat-label>
+                            <input type="number" matInput [(ngModel)]="damageDicesAmount" (ngModelChange)="clearDamageResult()">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Additional bonuses (e.g. perks)</mat-label>
+                            <input type="number" matInput [(ngModel)]="damageAddBonusOrPenalty" (ngModelChange)="clearDamageResult()">
+                        </mat-form-field>
+                    </div>
+                    <div class="buttons-container">
+                        <button
+                                mat-raised-button
+                                color="accent"
+                                (click)="rollDamageDice(selectedDamageDice, damageDicesAmount, damageDiceStat, damageAddBonusOrPenalty, data.statsMap)"
+                        >Roll</button>
+                        <ng-container *ngIf="resultDamage">
+                            <button
+                                    mat-raised-button
+                                    color="warn"
+                                    (click)="clearDamage()"
+                            >Clear</button>
+                        </ng-container>
+                    </div>
+                    <ng-container *ngIf="resultDamage">
+                        <br />
+                        <p class="result">
+                            Result: {{resultDamage.dirtyRes}}
+                        </p>
+                        <p class="result">
+                            Formula:
+                            {{resultDamage.cleanRes}}(roll D{{selectedDamageDice}} x {{damageDicesAmount}}) +
+                            {{(data.statsMap[damageAddBonusOrPenalty] ?? 0) - 5}}({{damageDiceStat}} bonus/penalty) +
+                            {{damageAddBonusOrPenalty}} (additional bonus/penalty)
+                        </p>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card">
+                <mat-card-header class="card-header">ROLL ANY DICE</mat-card-header>
+                <br/>
+                <mat-card-content>
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Dice</mat-label>
+                            <mat-select [(ngModel)]="selectedAnyDice" (ngModelChange)="clearAnyDiceResult()">
+                                <mat-option *ngFor="let dice of DICES" [value]="dice.value">
+                                    {{dice.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field color="accent" class="form-field">
+                            <mat-label>Dices to roll</mat-label>
+                            <input type="number" matInput [(ngModel)]="anyDicesAmount" (ngModelChange)="clearAnyDiceResult()">
+                        </mat-form-field>
+                    </div>
+                    <div class="buttons-container">
+                        <button
+                                mat-raised-button
+                                color="accent"
+                                (click)="rollAnyDice(selectedAnyDice, anyDicesAmount)"
+                        >Roll</button>
+                        <ng-container *ngIf="resultAny">
+                            <button
+                                    mat-raised-button
+                                    color="warn"
+                                    (click)="clearAny()"
+                            >Clear</button>
+                        </ng-container>
+                    </div>
+                    <ng-container *ngIf="resultAny">
+                        <br />
+                        <p class="result">
+                            Result: {{resultAny.cleanRes}}
+                        </p>
+                        <p class="result">
+                            Formula: {{resultAny.cleanRes}}(roll D{{selectedAnyDice}} x {{anyDicesAmount}})
+                        </p>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="actions-container" mat-dialog-actions>
+        <button mat-button (click)="diceRollerModalService.closeDialog()">Close</button>
+    </div>
+</div>
