@@ -87,20 +87,13 @@ export class PerksComponent implements OnChanges {
             perksArray.push({
               category: statName,
               perkName: 'You so fucking precious when you smile',
-              description: 'You can solve any fight by charisma check'
+              description: 'You can solve any fight by charisma check (only if enemy is able to understand you)'
             });
           }
           break;
         }
         case 'Agility': {
-          if (statValue === 10) {
-            perksArray.push({
-              category: statName,
-              perkName: 'Parkooooour',
-              description: 'You can use tricks during the fight to shock your opponents'
-            });
-          }
-          if (statValue >= 3) {
+          if (statValue >= 5) {
             perksArray.push({
               category: statName,
               perkName: 'Faster than bullet',
@@ -110,13 +103,6 @@ export class PerksComponent implements OnChanges {
           break;
         }
         case 'Perception': {
-          if (statValue >= 5) {
-            perksArray.push({
-              category: statName,
-              perkName: 'Hunter',
-              description: 'You are good at hunting'
-            });
-          }
           if (statValue === 10) {
             perksArray.push({
               category: statName,
@@ -124,7 +110,14 @@ export class PerksComponent implements OnChanges {
               description: 'You always notice traps'
             });
           }
-          if (statValue === 10) {
+          if (statValue === 5) {
+            perksArray.push({
+              category: statName,
+              perkName: 'Sneaky Joe',
+              description: 'You could use stealth skill (as a second action during the fight and also available out of fight)'
+            });
+          }
+          if (statValue === 3) {
             perksArray.push({
               category: statName,
               perkName: 'Doc',

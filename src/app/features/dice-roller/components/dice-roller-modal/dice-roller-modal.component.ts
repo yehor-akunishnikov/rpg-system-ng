@@ -19,15 +19,14 @@ export class DiceRollerModalComponent {
   public damageDicesAmount: number = 1;
   public damageDiceStat: string = 'Strength';
   public damageAddBonusOrPenalty: number = 0;
-  public resultDamage: { cleanRes: number, dirtyRes: number } = null;
+  public resultDamage: { cleanRes: number, dirtyRes: number, diceThrows: string } = null;
 
   public selectedAnyDice: number = 8;
   public anyDicesAmount: number = 1;
-  public resultAny: { cleanRes: number, dirtyRes: number } = null;
+  public resultAny: { cleanRes: number, dirtyRes: number, diceThrows: string } = null;
 
   public DICES: {title: string, value: number}[] = [
     {value: 2, title: 'D2'},
-    {value: 3, title: 'D3'},
     {value: 4, title: 'D4'},
     {value: 6, title: 'D6'},
     {value: 8, title: 'D8'},
@@ -39,7 +38,6 @@ export class DiceRollerModalComponent {
 
   public DAMAGE_DICES : {title: string, value: number}[] = [
     {value: 2, title: 'D2'},
-    {value: 3, title: 'D3'},
     {value: 4, title: 'D4'},
     {value: 6, title: 'D6'},
     {value: 8, title: 'D8'},
@@ -90,9 +88,12 @@ export class DiceRollerModalComponent {
     statsMap: StatsMap
   ): void {
     let cleanRes = 0;
+    let diceThrows = '';
 
     for (let i = 0; i < dicesAmount; i++) {
-      cleanRes += Math.floor(Math.random() * (selectedDice - 1 + 1) + 1);
+      const diceThrow = Math.floor(Math.random() * (selectedDice - 1 + 1) + 1);
+      cleanRes += diceThrow;
+      diceThrows += `+${diceThrow} `;
     }
 
     let dirtyRes = cleanRes;
@@ -105,7 +106,7 @@ export class DiceRollerModalComponent {
       dirtyRes += addBonusOrPenalty ?? 0;
     }
 
-    this.resultDamage = { cleanRes, dirtyRes };
+    this.resultDamage = { cleanRes, dirtyRes, diceThrows: diceThrows.trim() };
   }
 
   public clearDamage() {
@@ -125,14 +126,18 @@ export class DiceRollerModalComponent {
     dicesAmount: number
   ): void {
     let cleanRes = 0;
+    let diceThrows = '';
 
     for (let i = 0; i < dicesAmount; i++) {
-      cleanRes += Math.floor(Math.random() * (selectedDice - 1 + 1) + 1);
+      const diceThrow = Math.floor(Math.random() * (selectedDice - 1 + 1) + 1);
+
+      cleanRes += diceThrow;
+      diceThrows += `+${diceThrow} `;
     }
 
     let dirtyRes = cleanRes;
 
-    this.resultAny = { cleanRes, dirtyRes };
+    this.resultAny = { cleanRes, dirtyRes, diceThrows: diceThrows.trim() };
   }
 
   public clearAny() {

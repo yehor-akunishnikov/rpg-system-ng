@@ -7,7 +7,7 @@
       <mat-divider></mat-divider>
       <p>
         <span class="stat-highlight strength">Each 3 points</span> of strength grant
-        <span class="stat-highlight strength">4 HP</span> points (basic HP is 5).
+        <span class="stat-highlight strength">2 HP</span> points (basic HP is 10).
       </p>
       <mat-divider></mat-divider>
       <p>
@@ -16,9 +16,9 @@
       </p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight strength">After 5 lvl</span> character gains
-        <span class="stat-highlight strength">+1 bonus</span> to unarmed damage for each lvl.
-        Unarmed attacks require <span class="stat-highlight strength">D6 roll</span>.
+        Also Strength level affects dice for unarmed attacks.
+        Basic dice is <span class="stat-highlight strength">D4</span> and <span class="stat-highlight strength">D4 x2 for 10 lvl</span> of
+        Strength.
       </p>
       <mat-divider></mat-divider>
       <p>
@@ -47,13 +47,12 @@
     <div class="stat-info-container">
       <p>
         <span class="stat-highlight endurance">Each 3 points</span> of endurance grant
-        <span class="stat-highlight endurance">+1 passive armor point</span>. Armor
-        points affect an amount of damage retrieved during combat. Each armor
-        point reduces retrieved damage by 10%.
+        <span class="stat-highlight endurance">+2 armor class points</span>
+        Basic armor class is <span class="stat-highlight endurance">10</span>
       </p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight endurance">Each 3 points</span> of endurance grant
+        <span class="stat-highlight endurance">Each 4 points</span> of endurance grant
         <span class="stat-highlight endurance">1 death point</span> (basic death points
         for each character are 3). If character is knocked out in a fight he
         looses 1 death point after each round of fight. If character looses
@@ -163,7 +162,8 @@
       <p>Agility - acrobatics, range weapons, dodge.</p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight agility">10 points</span> of agility gives an ability to perform various tricks.
+        <span class="stat-highlight agility">10 points</span> You can run faster (even during a fight).
+        You can run away from fight, also you can change the distance between you and enemies faster.
       </p>
       <mat-divider></mat-divider>
       <p>
@@ -172,8 +172,12 @@
       </p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight agility">Each 3 lvl</span> of agility gains buff to dodging
-        (<span class="stat-highlight agility">+ 1 dodge point per 3d lvl</span>).
+        <span class="stat-highlight agility">After 3 lvl of agility</span> character gains ability to dodge attacks.
+        Uses main action point, during next enemies round each attack is thrown with disadvantage.
+      </p>
+      <mat-divider></mat-divider>
+      <p>
+        <span class="stat-highlight agility">After 5 lvl of agility</span> character gains one additional action point during a fight.
       </p>
     </div>
   </ng-container>
@@ -185,6 +189,11 @@
       <p>Perception - first aid, lock-pick, traps, sneak, investigation.</p>
       <mat-divider></mat-divider>
       <p>
+        <span class="stat-highlight perception">After 5 lvl</span> of perception character gains buff for the gun attacks
+        (<span class="stat-highlight perception">+1 for each lvl</span>).
+      </p>
+      <mat-divider></mat-divider>
+      <p>
         With <span class="stat-highlight perception">10 points</span> of perception you'll never be caught off guard.
       </p>
       <mat-divider></mat-divider>
@@ -194,11 +203,7 @@
       </p>
       <mat-divider></mat-divider>
       <p>
-        <span class="stat-highlight perception">Each 3 lvl</span> of perception gains buff to the stealth checks
-        (<span class="stat-highlight perception">+ 1 stealth point per 3d lvl</span>).
-      </p>
-      <p>
-        With <span class="stat-highlight perception">5 points</span> of perception you'll have an ability to hunt animals or your enemies.
+        <span class="stat-highlight perception">After 5 lvl</span> of perception character gains stealth ability.
       </p>
     </div>
   </ng-container>
@@ -210,7 +215,7 @@
       <p>
         Luck - requires coin flip instead of D20 for the check retry.
         <span class="stat-highlight luck">Each 5 points</span> of luck gives retry
-        attempt.
+        attempt. Each retry attempt is considered as an additional action during a fight.
       </p>
       <mat-divider></mat-divider>
       <p>
@@ -219,7 +224,7 @@
       </p>
       <mat-divider></mat-divider>
       <p>
-        Duels: Rock-paper-scissors, greater number, call more items in 10 sec.
+        Duels: Rock-paper-scissors, guess the number, call more items in 10 sec.
       </p>
       <p>
         <span class="stat-highlight luck">Duel win grants extra luck effect</span>

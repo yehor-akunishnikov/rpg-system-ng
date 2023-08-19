@@ -17,15 +17,17 @@ export class BasicsComponent {
     if (changes['statsMap']) {
       this.statsList = [
         STAT_NAME.HP,
+        STAT_NAME.ACTION_POINTS,
         STAT_NAME.MALE_DAMAGE,
         STAT_NAME.RANGE_DAMAGE,
         STAT_NAME.UNARMED,
         STAT_NAME.MP,
         STAT_NAME.RETRY_ATTEMPTS,
-        STAT_NAME.PASSIVE_ARMOUR,
+        STAT_NAME.ARMOR_CLASS,
         STAT_NAME.DEATH_POINTS,
         STAT_NAME.DODGE,
         STAT_NAME.STEALTH,
+        STAT_NAME.GUNS
       ];
     }
   }

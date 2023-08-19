@@ -47,10 +47,12 @@
                         </p>
                         <p class="result">
                             Formula:
-                            {{resultD20.cleanRes}}(roll D20) +
-                            {{selectedStat === 'None' ? 0 : (data.statsMap[selectedStat] ?? 0) - 5}}({{selectedStat === 'None' ? 'stat' : selectedStat}} bonus/penalty) +
-                            {{addBonusOrPenalty}} (additional bonus/penalty)
                         </p>
+                      <ul>
+                        <li>[{{resultD20.cleanRes}}](roll D20)</li>
+                        <li>[{{selectedStat === 'None' ? 0 : (data.statsMap[selectedStat] ?? 0) - 5}}]({{selectedStat === 'None' ? 'stat' : selectedStat}} bonus/penalty)</li>
+                        <li>[{{addBonusOrPenalty}}](additional bonus/penalty)</li>
+                      </ul>
                     </ng-container>
                 </mat-card-content>
             </mat-card>
@@ -62,7 +64,7 @@
                         <mat-form-field color="accent" class="form-field">
                             <mat-label>Stat</mat-label>
                             <mat-select [(ngModel)]="damageDiceStat" (ngModelChange)="clearDamageResult()">
-                                <mat-option *ngFor="let stat of ['Strength', 'Agility']" [value]="stat">
+                                <mat-option *ngFor="let stat of ['Strength', 'Agility', 'Perception']" [value]="stat">
                                     {{stat}}
                                 </mat-option>
                             </mat-select>
@@ -113,10 +115,12 @@
                         </p>
                         <p class="result">
                             Formula:
-                            {{resultDamage.cleanRes}}(roll D{{selectedDamageDice}} x {{damageDicesAmount}}) +
-                            {{(data.statsMap[damageAddBonusOrPenalty] ?? 0) - 5}}({{damageDiceStat}} bonus/penalty) +
-                            {{damageAddBonusOrPenalty}} (additional bonus/penalty)
                         </p>
+                      <ul>
+                        <li>[{{resultDamage.diceThrows}} = {{resultDamage.cleanRes}}](roll D{{selectedDamageDice}} x {{damageDicesAmount}})</li>
+                        <li>[{{(data.statsMap[damageAddBonusOrPenalty] ?? 0) - 5}}]({{damageDiceStat}} bonus/penalty)</li>
+                        <li>[{{damageAddBonusOrPenalty}}](additional bonus/penalty)</li>
+                      </ul>
                     </ng-container>
                 </mat-card-content>
             </mat-card>
@@ -161,8 +165,11 @@
                             Result: {{resultAny.cleanRes}}
                         </p>
                         <p class="result">
-                            Formula: {{resultAny.cleanRes}}(roll D{{selectedAnyDice}} x {{anyDicesAmount}})
+                            Formula:
                         </p>
+                        <ul>
+                          <li>[{{resultAny.diceThrows}} = {{resultAny.cleanRes}}](roll D{{selectedAnyDice}} x {{anyDicesAmount}})</li>
+                        </ul>
                     </ng-container>
                 </mat-card-content>
             </mat-card>

@@ -8,11 +8,13 @@ export enum STAT_NAME {
   UNARMED = 'UNARMED',
   MP = 'MP',
   RETRY_ATTEMPTS = 'RETRY ATTEMPTS',
-  PASSIVE_ARMOUR = 'PASSIVE ARMOUR',
+  ARMOR_CLASS = 'ARMOR CLASS',
   DEATH_POINTS = 'DEATH POINTS',
   DODGE = 'DODGE',
   RANGE_DAMAGE = 'RANGE DAMAGE',
   STEALTH = 'STEALTH',
+  GUNS = 'GUNS',
+  ACTION_POINTS = 'ACTION POINTS'
 }
 
 @Component({
@@ -44,11 +46,13 @@ export class StatItemComponent {
       case STAT_NAME.MALE_DAMAGE: return 'colorize';
       case STAT_NAME.MP: return 'flare';
       case STAT_NAME.RETRY_ATTEMPTS: return 'replay';
-      case STAT_NAME.PASSIVE_ARMOUR: return 'shield';
+      case STAT_NAME.ARMOR_CLASS: return 'shield';
       case STAT_NAME.DEATH_POINTS: return 'health_and_safety';
       case STAT_NAME.DODGE: return 'sports_martial_arts';
       case STAT_NAME.RANGE_DAMAGE: return 'adjust';
       case STAT_NAME.STEALTH: return 'visibility';
+      case STAT_NAME.GUNS: return 'gamepad';
+      case STAT_NAME.ACTION_POINTS: return 'directions_run';
       default: return '';
     }
   }
@@ -56,18 +60,19 @@ export class StatItemComponent {
   public countStatValue(statName: STAT_NAME, statsMap: StatsMap): number | string {
     switch (statName) {
       case STAT_NAME.HP: {
-        const BASE_HP = 5;
+        const BASE_HP = 10;
         const strengthBonus = statsMap.Strength ? Math.floor(statsMap.Strength / 3) : 0;
 
-        return BASE_HP + strengthBonus * 4;
+        return BASE_HP + strengthBonus * 2;
       }
       case STAT_NAME.MALE_DAMAGE:
         return statsMap.Strength - 5;
       case STAT_NAME.UNARMED: {
-        const BASE_UNARMED = 0;
-        const strengthBonus = statsMap.Strength - 5 >= 0 ? (statsMap.Strength - 5) + 1 : 0;
-
-        return BASE_UNARMED + strengthBonus;
+        if (statsMap.Strength === 10) {
+          return 'D4 2x';
+        } else {
+          return 'D4';
+        }
       }
       case STAT_NAME.MP: {
         let mpAmount = 0;
@@ -91,45 +96,36 @@ export class StatItemComponent {
           retryAttempts = statsMap.Luck === 10 ? 2 : 1;
         }
 
-        return retryAttempts;
+        return `${retryAttempts}`;
       }
-      case STAT_NAME.PASSIVE_ARMOUR: {
-        let passiveArmour = 0;
+      case STAT_NAME.ARMOR_CLASS: {
+        const BASE_ARMOR_CLASS = 10;
+        const enduranceBonus = statsMap.Endurance ? Math.floor(statsMap.Endurance / 3) : 0;
 
-        if (statsMap.Endurance) {
-          passiveArmour = Math.floor(statsMap.Endurance / 3);
-        }
-
-        return passiveArmour;
+        return BASE_ARMOR_CLASS + enduranceBonus * 2;
       }
       case STAT_NAME.DEATH_POINTS: {
         let deathPoints = 3;
 
         if (statsMap.Endurance) {
-          deathPoints = deathPoints + Math.floor(statsMap.Endurance / 3);
+          deathPoints = deathPoints + Math.floor(statsMap.Endurance / 4);
         }
 
         return deathPoints;
       }
       case STAT_NAME.DODGE: {
-        let dodgePoints = 0;
-
-        if (statsMap.Agility) {
-          dodgePoints = dodgePoints + Math.floor(statsMap.Agility / 3);
-        }
-
-        return dodgePoints;
+        return statsMap.Agility >= 3 ? 'AVAILABLE (D20 + AG)' : 'NOT AVAILABLE';
       }
       case STAT_NAME.RANGE_DAMAGE:
         return statsMap.Agility - 5;
       case STAT_NAME.STEALTH: {
-        let stealthPoints = 0;
-
-        if (statsMap.Perception) {
-          stealthPoints = stealthPoints + Math.floor(statsMap.Perception / 3);
-        }
-
-        return stealthPoints;
+        return statsMap.Perception >= 5 ? 'AVAILABLE (D20 + PE)' : 'NOT AVAILABLE';
+      }
+      case STAT_NAME.GUNS: {
+        return statsMap.Perception - 5;
+      }
+      case STAT_NAME.ACTION_POINTS: {
+        return statsMap.Agility >= 5 ? '1 Main, 2 Additional, 1 Short' : '1 Main, 1 Additional, 1 Short';
       }
       default:
         return 0;
